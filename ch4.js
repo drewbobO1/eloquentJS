@@ -1,8 +1,15 @@
 // #1
 function range(first, last, step = 1) {
     let allNums = [];
-    for (let i = first; i <= last; i += step) {
-      allNums.push(i);
+    if (first < last) {
+      for (let i = first; i <= last; i += step) {
+        allNums.push(i);
+      }
+    }
+    else if (first > last) {
+      for (let i = first; i >= last; i += step) {
+        allNums.push(i);
+      }
     }
     return allNums;
   }
@@ -23,5 +30,36 @@ function range(first, last, step = 1) {
   // → 55
 
 //  #2
+function reverseArray(arr) {
+    let revArr = [];
+    for (let i = arr.length-1; i >= 0; --i) {
+      revArr.push(arr[i]);
+    }
+    return revArr;
+  }
+  
+  function reverseArrayInPlace(arr) {
+    let left = 0;
+    let right = arr.length-1;
+  
+    while (left < right) {
+      let tmp = arr[left];
+      arr[left] = arr[right];
+      arr[right] = tmp;
+  
+      left++;
+      right--;
+    }
+  }
+  
+  let myArray = ["A", "B", "C"];
+  console.log(reverseArray(myArray));
+  // → ["C", "B", "A"];
+  console.log(myArray);
+  // → ["A", "B", "C"];
+  let arrayValue = [1, 2, 3, 4, 5];
+  reverseArrayInPlace(arrayValue);
+  console.log(arrayValue);
+  // → [5, 4, 3, 2, 1]
 
 //  #3
