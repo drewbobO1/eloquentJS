@@ -63,3 +63,36 @@ function reverseArray(arr) {
   // → [5, 4, 3, 2, 1]
 
 //  #3
+function arrayToList(arr) {
+  let newList = {};
+  let restVar = null;
+  
+  if (arr.length <= 0) {
+    return 1;
+  }
+  else {
+    for (let i = arr.length-1; i >= 0; --i) {
+      let tmp = {}; 
+      console.log("i: ", arr[i]);
+      tmp.value = arr[i];
+      tmp.rest = restVar;
+
+      newList = tmp;
+      restVar = tmp;
+    }
+    return newList;
+  }
+}
+// ---
+let newArr = [];
+
+function listToArray(list) {
+  newArr.push(list.value);
+  if (list.rest != null) {
+    return listToArray(list.rest);
+  }
+  else {
+    return newArr;
+  }
+}
+// ---
