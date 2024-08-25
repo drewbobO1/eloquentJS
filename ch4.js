@@ -29,6 +29,8 @@ function range(first, last, step = 1) {
   console.log(sum(range(1, 10)));
   // → 55
 
+
+  
 //  #2
 function reverseArray(arr) {
     let revArr = [];
@@ -61,6 +63,8 @@ function reverseArray(arr) {
   reverseArrayInPlace(arrayValue);
   console.log(arrayValue);
   // → [5, 4, 3, 2, 1]
+
+
 
 //  #3
 function arrayToList(arr) {
@@ -96,3 +100,37 @@ function listToArray(list) {
   }
 }
 // ---
+function prepend(frontVal, restObj) {
+  let newObj = {};
+  newObj.value = frontVal;
+  newObj.rest = restObj;
+  return newObj;
+}
+// ---
+let nthIndex = 0;
+let nthObj = {};
+
+function nth(list, endIndex) {
+  if (nthIndex == endIndex) {
+    return list.value;
+  }
+  else {
+    nthIndex += 1;
+    nthObj = list.rest;
+    return nth(nthObj, endIndex);
+  }
+}
+// ---
+
+console.log(arrayToList([10, 20]));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(listToArray(arrayToList([10, 20, 30])));
+// → [10, 20, 30]
+console.log(prepend(10, prepend(20, null)));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(nth(arrayToList([10, 20, 30]), 1));
+// → 20
+
+
+
+// #4
