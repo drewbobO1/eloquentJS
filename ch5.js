@@ -41,3 +41,22 @@ function loop(val, testFunc, updateFunc, bodyFunc) {
 
 
 // #3
+function every(array, test) {
+    for (el of array) {
+      if (!test(el)) return false;
+    }
+    return true;
+  }
+  
+// V2 was tough. Couldn't figure out how to invert the test func return value. Didn't realize you needed to set it up as an arrow function to do so.
+
+  function everyV2(array, test) {
+    return !array.some(el => !test(el));
+  }
+  
+  console.log(everyV2([1, 3, 5], n => n < 10));
+  // → true
+  console.log(everyV2([2, 4, 16], n => n < 10));
+  // → false
+  console.log(everyV2([], n => n < 10));
+  // → true
